@@ -1,8 +1,14 @@
 package exercise01;
 
-public class Divisão implements Calculo {
+class Divisão implements Calculo {
+    private final double number;
+
+    Divisão(double number) {
+        this.number = number;
+    }
+
     @Override
-    public double evaluate(double number1, double number2) {
-        return number1 / number2;
+    public double evaluate(double number) {
+        return this.number / number;
     }
 }

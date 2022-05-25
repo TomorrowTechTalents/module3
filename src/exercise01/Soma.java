@@ -1,8 +1,14 @@
 package exercise01;
 
-public class Soma implements Calculo {
+class Soma implements Calculo {
+    private final double number;
+
+    Soma(double number) {
+        this.number = number;
+    }
+
     @Override
-    public double evaluate(double number1, double number2) {
-        return number1 + number2;
+    public double evaluate(double number) {
+        return this.number + number;
     }
 }
