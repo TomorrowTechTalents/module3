@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     private enum Operation {
-        SUMMATION("soma"), SUBTRACTION("subtração"), ADDITION("adição"), DIVISION("divisão");
+        SUMMATION("soma"),
+        SUBTRACTION("subtração"),
+        ADDITION("adição"),
+        DIVISION("divisão"),
+        MULTIPLICATION("multiplicação"),
+        EXPONENTIATION("exponenciação");
 
         final String string;
 
@@ -17,19 +22,24 @@ public class Main {
         }
     }
 
+    private static int getOptionFromUser() {
+        System.out.println("escolha uma opção:");
+
+        for (Operation operation : Operation.values()) {
+            System.out.println(operation.ordinal() + 1 + " - " + operation.string);
+        }
+
+        System.out.println(Operation.size() + 1 + " - sair");
+
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("escolha uma opção:");
-
-            for (Operation operation : Operation.values()) {
-                System.out.println(operation.ordinal() + 1 + " - " + operation.string);
-            }
-
-            System.out.println(Operation.size() + 1 + " - sair");
-
-            int option = scanner.nextInt();
+            int option = getOptionFromUser();
 
             if (option == Operation.size() + 1) {
                 System.out.println("até logo");
@@ -63,6 +73,12 @@ public class Main {
                     break;
                 case DIVISION:
                     operation = new Divisão(number1);
+                    break;
+                case MULTIPLICATION:
+                    operation = new Multiplication(number1);
+                    break;
+                case EXPONENTIATION:
+                    operation = new Exponentiation(number1);
                     break;
                 default:
                     throw new RuntimeException("um erro ocorreu");
