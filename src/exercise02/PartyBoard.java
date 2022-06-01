@@ -1,42 +1,34 @@
 package exercise02;
 
 public class PartyBoard implements Board {
-    Card[] deck1 = new Card[50];
-    Card[] deck2 = new Card[50];
+    private Card[] deck1 = new Card[80];
+    Card[] deck2 = new Card[80];
+    Card[] deck3 = new Card[80];
+    Card[] deck4 = new Card[80];
+    Card[] deck5 = new Card[80];
 
-    int numberOfAttackCardsOnSide1 = 0;
-    int numberOfAttackCardsOnSide2 = 0;
-    int numberOfSpecialAttackCardsOnSide1 = 0;
-    int numberOfSpecialAttackCardsOnSide2 = 0;
+    private int numberOfAttackCardsOnBoard;
 
     @Override
-    public void insertDeck() {
-
+    public void insertDeck(Card[] deck) {
+        this.deck1 = deck;
     }
 
     @Override
-    public void receiveAttackCard() {
-        if (numberOfAttackCardsOnSide1 > 5) {
-            System.out.println("Não cabe mais carta de ataque");
-        } else {
-            numberOfAttackCardsOnSide1++;
-        }
-
-        if (numberOfSpecialAttackCardsOnSide1 > 2) {
-            System.out.println("Não cabe mais carta de ataque especial");
-        } else {
-            numberOfSpecialAttackCardsOnSide1++;
+    public void receiveAttackCard(Card attackCard) {
+        if (numberOfAttackCardsOnBoard >= 34) {
+            System.out.println("não cabe mais carta de ataque no tabuleiro");
         }
     }
 
-    @Override // depois refatorar com early returns
+    @Override
     public void checkIfThereIsAWinner(Player[] players) {
-        if (players[0].getLifePoints() <= 0 && players[1].getLifePoints() > 0) {
-            System.out.println("Jogador 2 venceu!! Parabéns!!! Desejamos mais sorte na próxima, Jogador 1!!!");
-        } else if (players[1].getLifePoints() <= 0 && players[0].getLifePoints() > 0) {
-            System.out.println("Jogador 1 venceu!! Parabéns!!! Desejamos mais sorte na próxima, Jogador 2!!!");
-        } else if (players[0].getLifePoints() <= 0 && players[1].getLifePoints() <= 0) {
-            System.out.println("empate");
+        for (Player player : players) {
+            if (player.getLifePoints() > 0) {
+                return;
+            }
         }
+
+        System.out.println("Parabéns!!");
     }
 }

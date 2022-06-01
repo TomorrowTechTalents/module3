@@ -1,34 +1,50 @@
 package exercise02;
 
 public class VersusBoard implements Board {
-    Card[] deck1 = new Card[80];
-    Card[] deck2 = new Card[80];
-    Card[] deck3 = new Card[80];
-    Card[] deck4 = new Card[80];
-    Card[] deck5 = new Card[80];
+    private Card[] deck1 = new Card[50];
+    Card[] deck2 = new Card[50];
 
-    int numberOfAttackCardsOnBoard;
+    private int numberOfAttackCardsOnSide1 = 0;
+    int numberOfAttackCardsOnSide2 = 0;
+    private int numberOfSpecialAttackCardsOnSide1 = 0;
+    int numberOfSpecialAttackCardsOnSide2 = 0;
 
     @Override
-    public void insertDeck() {
-
+    public void insertDeck(Card[] deck) {
+        this.deck1 = deck; // corrigir, talvez passando index
     }
 
     @Override
-    public void receiveAttackCard() {
-        if (numberOfAttackCardsOnBoard >= 34) {
-            System.out.println("não cabe mais carta de ataque no tabuleiro");
+    public void receiveAttackCard(Card attackCard) { //considerei que uma carta de ataque especial não conta como carta de ataque
+        if (attackCard instanceof AttackCard && numberOfAttackCardsOnSide1 > 5) { // fazer pro side2 tambem
+            System.out.println("Não cabe mais carta de ataque");
+        } else {
+            numberOfAttackCardsOnSide1++;
+        }
+
+        if (attackCard instanceof SpecialAttackCard && numberOfSpecialAttackCardsOnSide1 > 2) {
+            System.out.println("Não cabe mais carta de ataque especial");
+        } else {
+            numberOfSpecialAttackCardsOnSide1++;
         }
     }
 
     @Override
     public void checkIfThereIsAWinner(Player[] players) {
-        for (Player player : players) {
-            if (player.getLifePoints() > 0) {
-                return;
-            }
+        if (players[0].getLifePoints() <= 0 && players[1].getLifePoints() > 0) {
+            System.out.println("Jogador 2 venceu!! Parabéns!!! Desejamos mais sorte na próxima, Jogador 1!!!");
+
+            return;
         }
 
-        System.out.println("Parabéns!!");
+        if (players[1].getLifePoints() <= 0 && players[0].getLifePoints() > 0) {
+            System.out.println("Jogador 1 venceu!! Parabéns!!! Desejamos mais sorte na próxima, Jogador 2!!!");
+
+            return;
+        }
+
+        if (players[0].getLifePoints() <= 0 && players[1].getLifePoints() <= 0) {
+            System.out.println("empate");
+        }
     }
 }

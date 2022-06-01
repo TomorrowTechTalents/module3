@@ -1,6 +1,6 @@
 package exercise02;
 
-public class Card {
+class Card {
     enum CardType {
         ATTACK
     }

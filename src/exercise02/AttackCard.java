@@ -1,8 +1,8 @@
 package exercise02;
 
-public class AttackCard extends Card {
-    int power;
-    int endurance;
+class AttackCard extends Card {
+    private final int power;
+    private final int endurance;
 
     AttackCard(String name, CardType type, int cost, int power, int endurance) {
         super(name, type, cost);

@@ -1,7 +1,7 @@
 package exercise02;
 
-public class Player {
-    int lifePoints;
+class Player {
+    private int lifePoints;
 
     Player(int lifePoints) {
         this.lifePoints = lifePoints;
