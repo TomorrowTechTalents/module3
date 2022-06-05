@@ -1,6 +1,6 @@
 package exercise02;
 
-class AttackCard extends Card {
+class AttackCard extends Card implements ReceivableByVersusBoard, ReceivableByPartyBoard {
     private final int power;
     private final int endurance;
 
@@ -16,5 +16,15 @@ class AttackCard extends Card {
 
     int getEndurance() {
         return this.endurance;
+    }
+
+    @Override
+    public void beReceivedOnVersusBoard(VersusBoard versusBoard, int sideIndex) {
+        AttackCardOnVersusBoardRules.evaluate(versusBoard, sideIndex);
+    }
+
+    @Override
+    public void beReceivedOnPartyBoard(PartyBoard partyBoard) {
+        AttackCardOnPartyBoardRules.evaluate(partyBoard);
     }
 }

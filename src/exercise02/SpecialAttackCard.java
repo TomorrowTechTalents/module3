@@ -10,4 +10,9 @@ public class SpecialAttackCard extends AttackCard implements SpecialEffect {
     public void displaySpecialEffect() {
         System.out.println("Magic");
     }
+
+    @Override
+    public void beReceivedOnVersusBoard(VersusBoard versusBoard, int sideIndex) {
+        SpecialAttackCardOnVersusBoardRules.evaluate(versusBoard, sideIndex);
+    }
 }

@@ -2,7 +2,7 @@ package exercise02;
 
 class Card {
     enum CardType {
-        ATTACK
+        ATTACK, SPECIAL_ATTACK
     }
 
     private final String name;

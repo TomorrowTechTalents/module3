@@ -1,32 +1,46 @@
 package exercise02;
 
 public class VersusBoard implements Board {
-    private Card[] deck1 = new Card[50];
-    Card[] deck2 = new Card[50];
+    private static final byte NUMBER_OF_PLAYERS = 2;
+    private static final byte CARDS_PER_DECK = 50;
+    static final byte MAXIMUM_NUMBER_OF_ATTACK_CARDS_PER_SIDE = 5;
+    static final byte MAXIMUM_NUMBER_OF_SPECIAL_ATTACK_CARDS_PER_SIDE = 5;
 
-    private int numberOfAttackCardsOnSide1 = 0;
-    int numberOfAttackCardsOnSide2 = 0;
-    private int numberOfSpecialAttackCardsOnSide1 = 0;
-    int numberOfSpecialAttackCardsOnSide2 = 0;
+    private final Card[][] decks = new Card[CARDS_PER_DECK][NUMBER_OF_PLAYERS];
+    final int[] numberOfAttackCardsOnSides = new int[NUMBER_OF_PLAYERS];
+    final int[] numberOfSpecialAttackCardsOnSides = new int[NUMBER_OF_PLAYERS];
 
-    @Override
-    public void insertDeck(Card[] deck) {
-        this.deck1 = deck; // corrigir, talvez passando index
+    VersusBoard(Card[][] decks) {
+        for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
+            this.insertDeck(decks[i], i);
+        }
     }
 
     @Override
-    public void receiveAttackCard(Card attackCard) { //considerei que uma carta de ataque especial não conta como carta de ataque
-        if (attackCard instanceof AttackCard && numberOfAttackCardsOnSide1 > 5) { // fazer pro side2 tambem
-            System.out.println("Não cabe mais carta de ataque");
-        } else {
-            numberOfAttackCardsOnSide1++;
-        }
+    public void insertDeck(Card[] deck, int deckIndex) {
+        this.decks[deckIndex] = deck;
+    }
 
-        if (attackCard instanceof SpecialAttackCard && numberOfSpecialAttackCardsOnSide1 > 2) {
-            System.out.println("Não cabe mais carta de ataque especial");
-        } else {
-            numberOfSpecialAttackCardsOnSide1++;
-        }
+    @Override // botar uns returns?
+    public void receiveAttackCard(AttackCard attackCard, int playerIndex) { //considerei que uma carta de ataque especial não conta como carta de ataque
+
+        attackCard.beReceivedOnVersusBoard(this, playerIndex);
+
+//        if (attackCard instanceof AttackCard) {
+//            if (numberOfAttackCardsOnSides[sideIndex] > 5) {
+//                System.out.println("não cabe mais carta de ataque no lado " + sideIndex + 1 + " do campo");
+//            } else {
+//                numberOfAttackCardsOnSides[sideIndex]++;
+//            }
+//        }
+//
+//        if (attackCard instanceof SpecialAttackCard) {
+//            if (numberOfSpecialAttackCardsOnSides[sideIndex] > 2) {
+//                System.out.println("não cabe mais carta de ataque especial no lado " + sideIndex + 1 + " do campo");
+//            } else {
+//                numberOfSpecialAttackCardsOnSides[sideIndex]++;
+//            }
+//        }
     }
 
     @Override
