@@ -21,26 +21,9 @@ public class VersusBoard implements Board {
         this.decks[deckIndex] = deck;
     }
 
-    @Override // botar uns returns?
+    @Override
     public void receiveAttackCard(AttackCard attackCard, int playerIndex) { //considerei que uma carta de ataque especial não conta como carta de ataque
-
         attackCard.beReceivedOnVersusBoard(this, playerIndex);
-
-//        if (attackCard instanceof AttackCard) {
-//            if (numberOfAttackCardsOnSides[sideIndex] > 5) {
-//                System.out.println("não cabe mais carta de ataque no lado " + sideIndex + 1 + " do campo");
-//            } else {
-//                numberOfAttackCardsOnSides[sideIndex]++;
-//            }
-//        }
-//
-//        if (attackCard instanceof SpecialAttackCard) {
-//            if (numberOfSpecialAttackCardsOnSides[sideIndex] > 2) {
-//                System.out.println("não cabe mais carta de ataque especial no lado " + sideIndex + 1 + " do campo");
-//            } else {
-//                numberOfSpecialAttackCardsOnSides[sideIndex]++;
-//            }
-//        }
     }
 
     @Override
