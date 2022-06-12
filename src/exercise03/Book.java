@@ -11,7 +11,7 @@ public class Book extends Product {
 
     @Override
     public String toString() {
-        return "Livro = {nome: " + this.name + ", id: " + this.id + ", preço: " + this.price +
+        return "Livro = {nome: " + this.getName() + ", id: " + this.getId() + ", preço: " + this.getPrice() +
                          ", gêneros: " + this.genres + ", escritores: " + this.authors +
                          ", editora: " + this.publisher + "}";
     }

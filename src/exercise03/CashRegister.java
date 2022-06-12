@@ -7,8 +7,18 @@ class CashRegister {
     private BigDecimal cash = BigDecimal.ZERO;
 
     void registerPurchase(List<Product> purchaseProducts) {
+        BigDecimal salesValue = getSalesValue(purchaseProducts);
+
+        this.cash = this.cash.add(salesValue);
+    }
+
+    private BigDecimal getSalesValue(List<Product> purchaseProducts) {
+        BigDecimal salesValue = BigDecimal.ZERO;
+
         for (Product product : purchaseProducts) {
-            this.cash = this.cash.add(product.price);
+            salesValue = salesValue.add(product.getPrice());
         }
+
+        return salesValue;
     }
 }

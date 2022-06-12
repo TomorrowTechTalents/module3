@@ -4,10 +4,22 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 abstract class Product {
-    String name;
-    int id;
-    BigDecimal price;
+    private String name;
+    private final int id;
+    private BigDecimal price;
     private static int idCounter = 0;
+
+    String getName() {
+        return this.name;
+    }
+
+    int getId() {
+        return this.id;
+    }
+
+    BigDecimal getPrice() {
+        return price;
+    }
 
     @Override
     public abstract String toString();

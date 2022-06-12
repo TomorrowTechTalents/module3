@@ -7,7 +7,7 @@ public class Toy extends Product {
 
     @Override
     public String toString() {
-        return "Filme = {nome: " + this.name + ", id: " + this.id + ", preço: " + this.price +
+        return "Filme = {nome: " + this.getName() + ", id: " + this.getId() + ", preço: " + this.getPrice() +
                          ", tipo: " + this.type + "}";
     }
 

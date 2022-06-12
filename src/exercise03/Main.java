@@ -49,7 +49,7 @@ public class Main {
                     livrariaDoAdemir.getInventory().listProductsByCategory();
                     break;
                 case 8:
-                    livrariaDoAdemir.executePurchase();
+                    livrariaDoAdemir.executePurchaseWithRestrictions();
                     break;
                 case 9:
                     System.out.println("Até mais!");

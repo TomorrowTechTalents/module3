@@ -11,7 +11,7 @@ public class Game extends Product {
 
     @Override
     public String toString() {
-        return "Jogo = {nome: " + this.name + ", id: " + this.id + ", preço: " + this.price +
+        return "Jogo = {nome: " + this.getName() + ", id: " + this.getId() + ", preço: " + this.getPrice() +
                         ", distribuidora: " + this.distributor + ", gêneros: " + this.genres +
                         ", estúdio: " + this.studio + "}";
     }
