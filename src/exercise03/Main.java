@@ -1,5 +1,7 @@
 package exercise03;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -40,13 +42,16 @@ public class Main {
                     deleteProduct();
                     break;
                 case 5:
-                    listCategory();
+                    showNumberOfProductsByCategory();
                     break;
                 case 6:
+                    listProducts();
                     break;
                 case 7:
+                    listProductsByCategory();
                     break;
                 case 8:
+                    executePurchase();
                     break;
                 case 9:
                     System.out.println("Até mais!");
@@ -133,8 +138,8 @@ public class Main {
         inventory.delete(product);
     }
 
-    private static void listCategory() {
-        System.out.println("Qual a categoria do produto a ser adicionado?");
+    private static void showNumberOfProductsByCategory() {
+        System.out.println("Qual a categoria de interesse?");
         System.out.println("1 - livros");
         System.out.println("2 - jogos");
         System.out.println("3 - filmes");
@@ -144,8 +149,155 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Product product = null;
+        int counter = 0;
 
         int option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                for (Product product : inventory.products) {
+                    if (product instanceof Book) {
+                        counter++;
+                    }
+                }
+
+                System.out.println("há " + counter + " livro(s) em estoque");
+
+                break;
+            case 2:
+                for (Product product : inventory.products) {
+                    if (product instanceof Game) {
+                        counter++;
+                    }
+                }
+
+                System.out.println("há " + counter + " jogo(s) em estoque");
+
+                break;
+            case 3:
+                for (Product product : inventory.products) {
+                    if (product instanceof Movie) {
+                        counter++;
+                    }
+                }
+
+                System.out.println("há " + counter + " filme(s) em estoque");
+
+                break;
+            case 4:
+                for (Product product : inventory.products) {
+                    if (product instanceof Album) {
+                        counter++;
+                    }
+                }
+
+                System.out.println("há " + counter + " álbum(ns) de música em estoque");
+
+                break;
+            case 5:
+                for (Product product : inventory.products) {
+                    if (product instanceof Toy) {
+                        counter++;
+                    }
+                }
+
+                System.out.println("há " + counter + " brinquedo(s) em estoque");
+
+                break;
+            case 6:
+                break;
+            default:
+                System.out.println("opção inválida");
+        }
+    }
+
+    private static void listProducts() {
+        for (Product product : inventory.products) {
+            System.out.println(product);
+        }
+    }
+
+    private static void listProductsByCategory() {
+        System.out.println("Qual a categoria de interesse?");
+        System.out.println("1 - livros");
+        System.out.println("2 - jogos");
+        System.out.println("3 - filmes");
+        System.out.println("4 - álbuns de música");
+        System.out.println("5 - brinquedos");
+        System.out.println("6 - cancelar");
+
+        Scanner scanner = new Scanner(System.in);
+
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                for (Product product : inventory.products) {
+                    if (product instanceof Book) {
+                        System.out.println(product);
+                    }
+                }
+                break;
+            case 2:
+                for (Product product : inventory.products) {
+                    if (product instanceof Game) {
+                        System.out.println(product);
+                    }
+                }
+                break;
+            case 3:
+                for (Product product : inventory.products) {
+                    if (product instanceof Movie) {
+                        System.out.println(product);
+                    }
+                }
+                break;
+            case 4:
+                for (Product product : inventory.products) {
+                    if (product instanceof Album) {
+                        System.out.println(product);
+                    }
+                }
+                break;
+            case 5:
+                for (Product product : inventory.products) {
+                    if (product instanceof Toy) {
+                        System.out.println(product);
+                    }
+                }
+                break;
+            case 6:
+                break;
+            default:
+                System.out.println("opção inválida");
+        }
+
+    }
+
+    private static void executePurchase() {
+        Scanner scanner = new Scanner(System.in);
+        CashRegister cashRegister = new CashRegister(); // deveria estar junto a criacao de inventario?
+
+        List<Product> purchaseProducts = new ArrayList<>();
+
+        while (true) {
+            System.out.print("id do produto: ");
+
+            String idString = scanner.nextLine();
+
+            if (idString.isEmpty()) {
+                break;
+            }
+
+            Product product = inventory.findProductById(Integer.parseInt(idString));
+
+            purchaseProducts.add(product);
+        }
+
+        for (Product product : purchaseProducts) {
+            cashRegister.cash = cashRegister.cash.add(product.price);
+
+            inventory.delete(product);
+        }
     }
 }
