@@ -1,6 +1,7 @@
 package exercise03;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class Buyer {
@@ -18,10 +19,19 @@ class Buyer {
     private Buyer() {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.print("nome: ");
         this.name = scanner.nextLine();
+
+        System.out.print("RG: ");
         this.RG = scanner.nextLine();
+
+        System.out.print("CPF: ");
         this.CPF = scanner.nextLine();
-        this.birthday = LocalDate.parse(scanner.nextLine());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.print("data de nascimento: ");
+        this.birthday = LocalDate.parse(scanner.nextLine(), formatter);
     }
 
     LocalDate getBirthday() {
