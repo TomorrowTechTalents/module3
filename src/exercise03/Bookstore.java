@@ -5,8 +5,13 @@ import java.util.List;
 import java.util.Scanner;
 
 class Bookstore { // coisas de livraria
-    private final Inventory inventory = new Inventory();
-    private final CashRegister cashRegister = new CashRegister();
+    private final Inventory inventory;
+    private final CashRegister cashRegister;
+
+    Bookstore(Inventory inventory, CashRegister cashRegister) {
+        this.inventory = inventory;
+        this.cashRegister = cashRegister;
+    }
 
     void addProduct() { // melhor na main?
         System.out.println("Qual a categoria do produto a ser adicionado?");
@@ -183,5 +188,4 @@ class Bookstore { // coisas de livraria
             this.inventory.delete(product);
         }
     }
-
 }

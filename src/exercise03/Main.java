@@ -6,7 +6,9 @@ public class Main {
     public static void main(String[] args) {
 // é como se fosse, faz a vezes de, o front, colocar isso na documentacao
 
-        Bookstore livrariaDoAdemir = new Bookstore();
+        Inventory inventory = new Inventory();
+        CashRegister cashRegister = new CashRegister();
+        Bookstore livrariaDoAdemir = new Bookstore(inventory, cashRegister);
 
         while(true) {
             System.out.println("Livraria do Ademir");
