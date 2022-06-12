@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Book extends Product {
     private final List<BookGenre> genres = new ArrayList<>();
-    private final List<String> authors = new ArrayList<>(); // talvez fazer Set hein
+    private final List<String> authors = new ArrayList<>();
     private String publisher;
 
     @Override

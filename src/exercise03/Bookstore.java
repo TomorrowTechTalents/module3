@@ -2,7 +2,7 @@ package exercise03;
 
 import java.util.List;
 
-class Bookstore { // coisas de livraria
+class Bookstore {
     private final Inventory inventory;
     private final CashRegister cashRegister;
 

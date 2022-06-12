@@ -30,7 +30,7 @@ class Buyer {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.print("data de nascimento: ");
+        System.out.print("data de nascimento (dd/mm/aaaa): ");
         this.birthday = LocalDate.parse(scanner.nextLine(), formatter);
     }
 

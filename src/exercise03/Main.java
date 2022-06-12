@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-// é como se fosse, faz a vezes de, o front, colocar isso na documentacao
-
         Inventory inventory = new Inventory();
         CashRegister cashRegister = new CashRegister();
         Bookstore livrariaDoAdemir = new Bookstore(inventory, cashRegister);

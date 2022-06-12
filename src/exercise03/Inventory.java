@@ -68,7 +68,7 @@ class Inventory {
         this.add(product);
 
         System.out.println("\nProduto cadastrado com sucesso!");
-    } // colocar na documentacao que sem nada é mais protegido que protected
+    }
 
     private void add(Product product) {
         this.products.add(product);

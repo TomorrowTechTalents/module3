@@ -36,3 +36,12 @@ O programa foi expandido, o que já funcionava não foi modificado
 
 ## Melhorias
 - menus poderiam ser construídos a partir de enums, o que facilitaria futuras expansões
+- a classe Inventory precisa ser dividida; isto será feito em breve
+- usar streams em vez de for
+- tratar possíveis exceções
+- mostrar ao usuário os gêneros possíveis ao cadastrar um produto
+- usar Set em vez de List para coleções de elementos que não possam se repetir
+
+### Observações
+- foi tentado sempre deixar o grau de visibilidade/acesso mais restrito possível às classes e aos seus membros; note-se que, em geral, para classes e seus campos, a ausência de uma keyword modificadora de visibilidade (default) é mais restritiva do que o uso do controlador de visibilidade protected, ou seja, a visibilidade dada por protected é maior (menos restritiva) do que a dada por default (sem modificador de acesso); isso pode ser contraintuitivo por isso achou-se melhor destacar
+- para os gêneros dos produtos, deve-se entrar com uma das opções contidas nos enums correspondentes ao tipo do produto em questão
