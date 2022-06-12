@@ -28,25 +28,25 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    livrariaDoAdemir.addProduct();
+                    livrariaDoAdemir.getInventory().add();
                     break;
                 case 2:
-                    livrariaDoAdemir.checkProduct();
+                    Product.check(livrariaDoAdemir.getInventory());
                     break;
                 case 3:
-                    livrariaDoAdemir.updateProduct();
+                    Product.update(livrariaDoAdemir.getInventory());
                     break;
                 case 4:
-                    livrariaDoAdemir.deleteProduct();
+                    livrariaDoAdemir.getInventory().delete();
                     break;
                 case 5:
-                    livrariaDoAdemir.showNumberOfProductsByCategory();
+                    livrariaDoAdemir.getInventory().showNumberOfProductsByCategory();
                     break;
                 case 6:
-                    livrariaDoAdemir.listProducts();
+                    livrariaDoAdemir.getInventory().listAll();
                     break;
                 case 7:
-                    livrariaDoAdemir.listProductsByCategory();
+                    livrariaDoAdemir.getInventory().listProductsByCategory();
                     break;
                 case 8:
                     livrariaDoAdemir.executePurchase();

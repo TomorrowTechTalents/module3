@@ -12,8 +12,22 @@ abstract class Product {
     @Override
     public abstract String toString();
 
-    void check() {
+    private void check() {
         System.out.println(this);
+    }
+
+    static void check(Inventory inventory) {
+        Product product = inventory.getProductById();
+
+        if (product != null) {
+            product.check();
+        }
+    }
+
+    static void update(Inventory inventory) {
+        Product product = inventory.getProductById();
+
+        product.update();
     }
 
     void update() {
