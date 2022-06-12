@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 class Bookstore { // coisas de livraria
-    private Inventory inventory;
-    private CashRegister cashRegister;
+    private final Inventory inventory = new Inventory();
+    private final CashRegister cashRegister = new CashRegister();
 
     void addProduct() { // melhor na main?
         System.out.println("Qual a categoria do produto a ser adicionado?");
