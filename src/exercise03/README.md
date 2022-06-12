@@ -4,6 +4,8 @@
 
 [descrição original do exercício](https://github.com/rflima11/exercicios-poo2-letscode/tree/main/03%20-%20Sistema%20Livraria)
 
+<!-- colocar link do replit -->
+
 # Exercício de Sistema de Livraria
 Com este exercício busca-se implementar um sistema de livraria. Há duas etapas, com a segunda simulando uma mudança de escopo do projeto original, tentando assemelhar-se a uma situação real.
 

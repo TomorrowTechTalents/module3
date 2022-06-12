@@ -5,12 +5,16 @@ import java.util.Scanner;
 
 abstract class Product {
     String name;
-    int id; //ver se funciona
+    int id;
     BigDecimal price;
     private static int idCounter = 0;
 
     @Override
     public abstract String toString();
+
+    void check() {
+        System.out.println(this);
+    }
 
     void update() {
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +36,6 @@ abstract class Product {
         idCounter++;
 
         System.out.print("preço: ");
-        this.price = scanner.nextBigDecimal(); // precisa do nextline aqui? acho que nao
+        this.price = scanner.nextBigDecimal();
     }
 }

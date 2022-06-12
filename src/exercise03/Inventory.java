@@ -2,6 +2,7 @@ package exercise03;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 class Inventory {
     private final List<Product> products = new ArrayList<>();
@@ -10,10 +11,9 @@ class Inventory {
         this.products.add(product);
     }
 
-    // talvez fazer privada
-    Product findProductById(int id) { // usar stream
+    private Product findProductById(int id) { // usar stream
         for (Product product : this.products) {
-            if (product.id == id) { // garantir que o id é único, static na class, automatico++
+            if (product.id == id) {
                 return product;
             }
         }
@@ -22,16 +22,45 @@ class Inventory {
         return null;
     }
 
-    void checkProductById(int id) {
-        Product product = findProductById(id);
+    Product getProductById() {
+        System.out.print("id do produto: ");
 
-        if (product != null) {
-            System.out.println(product);
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+
+        return this.findProductById(id);
+    }
+
+    List<Product> getProductsListById() {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Product> productsList = new ArrayList<>();
+
+        while (true) {
+            System.out.print("id do produto: ");
+
+            String idString = scanner.nextLine();
+
+            if (idString.isEmpty()) {
+                break;
+            }
+
+            Product product = this.findProductById(Integer.parseInt(idString));
+
+            productsList.add(product);
         }
+
+        return productsList;
     }
 
     void delete(Product product) {
         products.remove(product);
+    }
+
+    void delete(List<Product> products) {
+        for (Product product : products) {
+            this.delete(product);
+        }
     }
 
     int getNumberOfBooks() {

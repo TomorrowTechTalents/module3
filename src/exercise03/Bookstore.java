@@ -13,7 +13,7 @@ class Bookstore { // coisas de livraria
         this.cashRegister = cashRegister;
     }
 
-    void addProduct() { // melhor na main?
+    void addProduct() {
         System.out.println("Qual a categoria do produto a ser adicionado?");
         System.out.println("1 - livros");
         System.out.println("2 - jogos");
@@ -24,7 +24,7 @@ class Bookstore { // coisas de livraria
 
         Scanner scanner = new Scanner(System.in);
 
-        Product product = null;
+        Product product;
 
         int option = scanner.nextInt();
 
@@ -45,44 +45,33 @@ class Bookstore { // coisas de livraria
                 product = new Toy();
                 break;
             case 6:
-                // opção cancelar
-                break;
+                return;
             default:
                 System.err.println("opção inválida");
+                return;
         }
 
-        this.inventory.add(product); // ou talvez passar o inventário como parâmetro
+        this.inventory.add(product);
 
         System.out.println("\nProduto cadastrado com sucesso!");
     } // colocar na documentacao que sem nada é mais protegido que protected
 
     void checkProduct() {
-        System.out.print("id do produto: ");
+        Product product = this.inventory.getProductById();
 
-        Scanner scanner = new Scanner(System.in);
-        int id = scanner.nextInt();
-
-        this.inventory.checkProductById(id);
+        if (product != null) {
+            product.check();
+        }
     }
 
     void updateProduct() {
-        System.out.print("id do produto: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int id = scanner.nextInt();
-
-        Product product = this.inventory.findProductById(id);
+        Product product = this.inventory.getProductById();
 
         product.update();
     }
 
     void deleteProduct() {
-        System.out.print("id do produto: "); // método getProductId()
-
-        Scanner scanner = new Scanner(System.in);
-        int id = scanner.nextInt();
-
-        Product product = this.inventory.findProductById(id);
+        Product product = this.inventory.getProductById();
 
         this.inventory.delete(product);
     }
@@ -97,7 +86,6 @@ class Bookstore { // coisas de livraria
         System.out.println("6 - cancelar");
 
         Scanner scanner = new Scanner(System.in);
-
         int option = scanner.nextInt();
 
         switch (option) {
@@ -137,7 +125,6 @@ class Bookstore { // coisas de livraria
         System.out.println("6 - cancelar");
 
         Scanner scanner = new Scanner(System.in);
-
         int option = scanner.nextInt();
 
         switch (option) {
@@ -163,29 +150,11 @@ class Bookstore { // coisas de livraria
         }
     }
 
-    void executePurchase() { // talvez mover pra cashregister
-        Scanner scanner = new Scanner(System.in);
+    void executePurchase() {
+        List<Product> purchaseProducts = this.inventory.getProductsListById();
 
-        List<Product> purchaseProducts = new ArrayList<>();
+        this.cashRegister.registerPurchase(purchaseProducts);
 
-        while (true) {
-            System.out.print("id do produto: ");
-
-            String idString = scanner.nextLine();
-
-            if (idString.isEmpty()) {
-                break;
-            }
-
-            Product product = this.inventory.findProductById(Integer.parseInt(idString));
-
-            purchaseProducts.add(product);
-        }
-
-        for (Product product : purchaseProducts) {
-            cashRegister.cash = cashRegister.cash.add(product.price);
-
-            this.inventory.delete(product);
-        }
+        this.inventory.delete(purchaseProducts);
     }
 }

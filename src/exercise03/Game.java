@@ -11,20 +11,16 @@ public class Game extends Product {
 
     @Override
     public String toString() {
-        return "Jogo = {nome: " + this.name + ", id: " + this.id + ", preço: " + this.price + ", distribuidora: " +
-                this.distributor + ", gêneros: " + this.genres + ", estúdio: " + this.studio + "}";
+        return "Jogo = {nome: " + this.name + ", id: " + this.id + ", preço: " + this.price +
+                        ", distribuidora: " + this.distributor + ", gêneros: " + this.genres +
+                        ", estúdio: " + this.studio + "}";
     }
 
     @Override
     void update() {
+        super.update();
+
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("novo nome: ");
-        this.name = scanner.nextLine();
-
-        System.out.print("novo preço: ");
-        this.price = scanner.nextBigDecimal();
-        scanner.nextLine();
 
         System.out.print("nova distribuidora: ");
         this.distributor = scanner.nextLine();
@@ -33,7 +29,7 @@ public class Game extends Product {
         while (true) {
             System.out.print("novo gênero: ");
 
-            String genreString = scanner.nextLine();
+            String genreString = scanner.nextLine().toUpperCase();
 
             if (genreString.isEmpty()) {
                 break;
@@ -55,7 +51,7 @@ public class Game extends Product {
         while (true) {
             System.out.print("gênero: ");
 
-            String genreString = scanner.nextLine();
+            String genreString = scanner.nextLine().toUpperCase();
 
             if (genreString.isEmpty()) {
                 break;
