@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-// é como se fosse, faz a vezes de, o front, colocar isso na documentacao
-
         Inventory inventory = new Inventory();
         CashRegister cashRegister = new CashRegister();
         Bookstore livrariaDoAdemir = new Bookstore(inventory, cashRegister);
@@ -49,7 +47,7 @@ public class Main {
                     livrariaDoAdemir.getInventory().listProductsByCategory();
                     break;
                 case 8:
-                    livrariaDoAdemir.executePurchase();
+                    livrariaDoAdemir.executePurchaseWithRestrictions();
                     break;
                 case 9:
                     System.out.println("Até mais!");
