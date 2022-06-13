@@ -1,5 +1,6 @@
 package exercise03;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -47,7 +48,10 @@ public class Main {
                     livrariaDoAdemir.getInventory().listProductsByCategory();
                     break;
                 case 8:
-                    livrariaDoAdemir.executePurchaseWithRestrictions();
+                    List<Product> purchaseProducts = livrariaDoAdemir.getInventory().getProductsListById();
+                    Purchase purchase = new Purchase(purchaseProducts);
+                    DiscountForBuyingBooks discount = new DiscountForBuyingBooks();
+                    livrariaDoAdemir.executePurchaseWithRestrictionsAndDiscountRule(purchase, discount);
                     break;
                 case 9:
                     System.out.println("Até mais!");

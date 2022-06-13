@@ -45,3 +45,5 @@ O programa foi expandido, o que já funcionava não foi modificado
 ### Observações
 - foi tentado sempre deixar o grau de visibilidade/acesso mais restrito possível às classes e aos seus membros; note-se que, em geral, para classes e seus campos, a ausência de uma keyword modificadora de visibilidade (default) é mais restritiva do que o uso do controlador de visibilidade protected, ou seja, a visibilidade dada por protected é maior (menos restritiva) do que a dada por default (sem modificador de acesso); isso pode ser contraintuitivo por isso achou-se melhor destacar
 - para os gêneros dos produtos, deve-se entrar com uma das opções contidas nos enums correspondentes ao tipo do produto em questão
+- no decorrer do desenvolvimento, melhorias foram feitas independentes das mudanças de escopo, ou seja, foram melhorias decorrentes da programação normal do código, pois sempre há o que melhorar, não devido a mudanças do escopo
+

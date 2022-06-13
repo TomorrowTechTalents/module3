@@ -11,32 +11,34 @@ class Bookstore {
         this.cashRegister = cashRegister;
     }
 
-    void executePurchase() {
+    void executePurchase(Purchase purchase) {
         List<Product> purchaseProducts = this.inventory.getProductsListById();
 
-        this.cashRegister.registerPurchase(purchaseProducts);
+        this.cashRegister.registerPurchase(purchase);
 
         this.inventory.delete(purchaseProducts);
     }
 
-    void executePurchaseWithRestrictions() {
-        List<Product> purchaseProducts = this.inventory.getProductsListById();
+    private void executePurchaseWithRestrictions(Purchase purchase) {
+        if (purchase.getRestricted()) {
+            purchase.setBuyer(Buyer.getBuyerInstance()); //fazer isso na Purchase validator?
 
-        boolean purchaseRestricted = PurchaseValidator.isPurchaseRestricted(purchaseProducts);
-
-        if (purchaseRestricted) {
-            Buyer buyer = Buyer.getBuyerInstance();
-
-            if (PurchaseValidator.isBuyerAMinor(buyer)) {
+            if (purchase.getBuyer().getMinor()) {
                 System.out.println("compra bloqueada");
 
                 return;
             }
         }
 
-        this.cashRegister.registerPurchase(purchaseProducts);
+        this.cashRegister.registerPurchase(purchase); //
 
-        this.inventory.delete(purchaseProducts);
+        this.inventory.delete(purchase.getPurchaseProducts());
+    }
+
+    void executePurchaseWithRestrictionsAndDiscountRule(Purchase purchase, DiscountRule discountRule) {
+        discountRule.apply(purchase);
+
+        executePurchaseWithRestrictions(purchase);
     }
 
     Inventory getInventory() {
