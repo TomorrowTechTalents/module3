@@ -3,6 +3,7 @@ package exercise03;
 import java.math.BigDecimal;
 
 public class DiscountForBuyingBooks implements DiscountRule { // colocar na doc que poderiam ser outras regras
+    @Override
     public BigDecimal apply(Purchase purchase) {
         BigDecimal bookSalesValue = BigDecimal.ZERO;
 

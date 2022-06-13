@@ -30,7 +30,7 @@ O programa foi expandido, o que já funcionava não foi modificado
 - criou-se uma interface ProductForAdultAudience, que serve de "rotulador" aos produtos destinados ao público adulto
 - criou-se uma classe para cada tipo de produto (livro, jogo, filme, álbum de música, brinquedo, totalizando 5 classes) que implementa a interface ProductForAdultAudience; estas serão as classes a que pertencerão os produtos destinados ao público adulto
 - a classe Bookstore foi expandida com 1 novo método, executePurchaseWithRestrictions(); os métodos pré-existentes não foram alterados
-- a classe Inventory contém um menu para que o usuário escolha que tipo de produto será cadastrado; tal menu não seria necessário, por exemplo, caso os produtos a ser adicionados viessem externamente de outra aplicação; como este programa é completo, permitindo a inserção manual de dados por parte do usuário, há menus que fazem as vezes de "frontend"; esses menus foram alterados quando se aumentou o número de opções ao usuário; não é realmente uma mudança de lógica de programação, sim uma inclusão de novas linhas de código referentes às novas opções
+- a classe Inventory contém um menu para que o usuário escolha que tipo de produto será cadastrado; tal menu não seria necessário, por exemplo, caso os produtos a ser adicionados viessem externamente de outra aplicação; como este programa é completo (minus persistência de dados, e provavelmente outras coisas também), permitindo a inserção manual de dados por parte do usuário, há menus que fazem as vezes de "frontend"; esses menus foram alterados quando se aumentou o número de opções ao usuário; não é realmente uma mudança de lógica de programação, sim uma inclusão de novas linhas de código referentes às novas opções
 - assim como a classe Inventory, a classe Main também contém um menu (mostrando as opções inicias ao usuário, funcionando como "frontend" para a aplicação); uma mudança em uma linha foi realizada, mas possivelmente em breves refatorações essa situação seja melhorada
 
 
@@ -41,9 +41,14 @@ O programa foi expandido, o que já funcionava não foi modificado
 - tratar possíveis exceções
 - mostrar ao usuário os gêneros possíveis ao cadastrar um produto
 - usar Set em vez de List para coleções de elementos que não possam se repetir
+- implementar persistência de dados
+- validar dados de entrada
+- incluir mais valores para os gêneros
 
 ### Observações
 - foi tentado sempre deixar o grau de visibilidade/acesso mais restrito possível às classes e aos seus membros; note-se que, em geral, para classes e seus campos, a ausência de uma keyword modificadora de visibilidade (default) é mais restritiva do que o uso do controlador de visibilidade protected, ou seja, a visibilidade dada por protected é maior (menos restritiva) do que a dada por default (sem modificador de acesso); isso pode ser contraintuitivo por isso achou-se melhor destacar
 - para os gêneros dos produtos, deve-se entrar com uma das opções contidas nos enums correspondentes ao tipo do produto em questão
 - no decorrer do desenvolvimento, melhorias foram feitas independentes das mudanças de escopo, ou seja, foram melhorias decorrentes da programação normal do código, pois sempre há o que melhorar, não devido a mudanças do escopo
+- o enunciado do exercício diz `toda compra que passar de R$200,00 em livros deve receber um desconto de 15%`; foi considerado que a compra (e não uma parte da compra) recebe o desconto em questão
+- 
 
