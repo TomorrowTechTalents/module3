@@ -34,13 +34,13 @@ O programa foi expandido, o que já funcionava não foi modificado.
 > toda compra que passar de **R$200,00** em livros deve receber um desconto de **15%**
 
 Para implementar esta segunda mudança de escopo:
-- foi criada uma classe Purchase, para melhor organizar as compras.
+- foi criada uma classe Purchase, para melhor organizar as compras
 - foi criada a interface DiscountRule para regras de descontos, assim o programa fica expansível para outras regras de desconto diferentes
 - foi criada a classe DiscountForBuyingBooks com a implementação efetiva da regra de desconto pedida
 
 ## Melhorias
 - menus poderiam ser construídos a partir de enums, o que facilitaria futuras expansões
-- a classe Inventory precisa ser dividida; isto será feito em breve
+- a classe Inventory precisa ser dividida (isso foi feito)
 - usar streams em vez de for
 - tratar possíveis exceções
 - mostrar ao usuário os gêneros possíveis ao cadastrar um produto
