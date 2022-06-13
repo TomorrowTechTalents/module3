@@ -1,6 +1,11 @@
 package exercise03;
 
+import java.util.List;
 import java.util.Scanner;
+
+import static exercise03.InventoryListPrinter.listAll;
+import static exercise03.InventoryListPrinter.listProductsByCategory;
+import static exercise03.InventoryNumberOfProductsByCategory.showNumberOfProductsByCategory;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,6 +26,7 @@ public class Main {
             System.out.println("8 - operação de compra");
             System.out.println("9 - encerrar");
 
+            List<Product> products;
             Scanner scanner = new Scanner(System.in);
             int option = scanner.nextInt();
 
@@ -38,16 +44,22 @@ public class Main {
                     livrariaDoAdemir.getInventory().delete();
                     break;
                 case 5:
-                    livrariaDoAdemir.getInventory().showNumberOfProductsByCategory();
+                    products = livrariaDoAdemir.getInventory().getProducts();
+                    showNumberOfProductsByCategory(products);
                     break;
                 case 6:
-                    livrariaDoAdemir.getInventory().listAll();
+                    products = livrariaDoAdemir.getInventory().getProducts();
+                    listAll(products);
                     break;
                 case 7:
-                    livrariaDoAdemir.getInventory().listProductsByCategory();
+                    products = livrariaDoAdemir.getInventory().getProducts();
+                    listProductsByCategory(products);
                     break;
                 case 8:
-                    livrariaDoAdemir.executePurchaseWithRestrictions();
+                    List<Product> purchaseProducts = livrariaDoAdemir.getInventory().getProductsListById();
+                    Purchase purchase = new Purchase(purchaseProducts);
+                    DiscountForBuyingBooks discount = new DiscountForBuyingBooks();
+                    livrariaDoAdemir.executePurchaseWithRestrictionsAndDiscountRule(purchase, discount);
                     break;
                 case 9:
                     System.out.println("Até mais!");
